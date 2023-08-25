@@ -10,14 +10,23 @@ public class CarDataProcessor {
 
         String targetBrand = "Toyota";
 
-        System.out.println("Cars of brand " + targetBrand + ":");
+        int count = countCarsByBrand(cars, targetBrand);
+        System.out.println("Number of cars of brand " + targetBrand + ": " + count);
         for (Car car : cars) {
             if (car.brand.equals(targetBrand)) {
                 System.out.println(car);
             }
         }
     }
-
+    public static int countCarsByBrand(List<Car> cars, String targetBrand) {
+        int count = 0;
+        for (Car car : cars) {
+            if (car.brand.equals(targetBrand)) {
+                count++;
+            }
+        }
+        return count;
+    }
     public static List<Car> readCarDataFromFile(String fileName) {
         List<Car> cars = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
